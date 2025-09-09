@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/db")
 public class DbTestController {
@@ -33,9 +35,9 @@ public class DbTestController {
     }
 
     @GetMapping("/get-all")
-    public ResponseEntity<Iterable<TestEntity>> getAllMessages() {
+    public ResponseEntity<List<TestEntity>> getAllMessages() {
         try {
-            Iterable<TestEntity> allMessages = testService.getAllTestMessages();
+            List<TestEntity> allMessages = testService.getAllTestMessages();
             return ResponseEntity.ok(allMessages);
         } catch (Exception e) {
             e.printStackTrace();

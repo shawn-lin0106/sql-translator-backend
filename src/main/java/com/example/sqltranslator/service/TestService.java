@@ -2,8 +2,11 @@ package com.example.sqltranslator.service;
 
 import com.example.sqltranslator.entity.TestEntity;
 import com.example.sqltranslator.repository.TestRepository;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class TestService {
@@ -18,11 +21,12 @@ public class TestService {
     public TestEntity createTestMessage(String message) {
         TestEntity testEntity = new TestEntity();
         testEntity.setMessage(message);
-        return testRepository.save(testEntity);
+        testRepository.insert(testEntity);
+        return testEntity;
     }
 
-    public Iterable<TestEntity> getAllTestMessages() {
-        return testRepository.findAll();
+    public List<TestEntity> getAllTestMessages() {
+        return testRepository.selectList(new QueryWrapper<>());
     }
 
 }

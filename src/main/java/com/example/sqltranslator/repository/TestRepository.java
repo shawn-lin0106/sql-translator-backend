@@ -1,10 +1,10 @@
 package com.example.sqltranslator.repository;
 
 import com.example.sqltranslator.entity.TestEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
-@Repository
-public interface TestRepository extends JpaRepository<TestEntity, Long> {
+@Mapper
+public interface TestRepository extends BaseMapper<TestEntity> {
 
 }
